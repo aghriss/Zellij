@@ -7,7 +7,7 @@ The shortcuts are self-explanatory. These are my settings:
 
 
 | Shortcut               | Default Binding       |
-|------------------------+-----------------------|
+|------------------------|-----------------------|
 | Move Down              | Meta+Down             |
 | Move Left              | Meta+Left             |
 | Move Right             | Meta+Right            |
@@ -24,3 +24,11 @@ The shortcuts are self-explanatory. These are my settings:
 | Split vertically by 4  | Meta+Shift+Num+Left   |
 | Change Fullscreen      | Ctrl+Alt+Num+.        |
 
+
+- Demo:
+
+
+https://raw.githubusercontent.com/aghriss/Zellij/media/example.mp4
+
+
+This was initially a pull request from [Mudeer](https://github.com/darkstego/Mudeer/)
