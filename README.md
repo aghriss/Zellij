@@ -27,8 +27,11 @@ The shortcuts are self-explanatory. These are my settings:
 
 - Demo:
 
+https://user-images.githubusercontent.com/32200675/173737161-f2769dbe-4979-47e9-bd43-fd34a683c657.mp4
 
-https://raw.githubusercontent.com/aghriss/Zellij/media/example.mp4
+
+
+
 
 
 This was initially a pull request from [Mudeer](https://github.com/darkstego/Mudeer/)
