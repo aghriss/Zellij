@@ -1,0 +1,21 @@
+[Desktop Entry]
+Name=Zellij
+Comment=Zelling Tiling
+Icon=preferences-system-windows-script-test
+Type=Service
+
+X-Plasma-API=javascript
+X-Plasma-MainScript=code/zellij.js
+
+X-KDE-PluginInfo-Author=Ayoub Ghriss
+X-KDE-PluginInfo-Email=contact@aghriss.net
+X-KDE-PluginInfo-Name=zellij-tiles
+X-KDE-PluginInfo-Version=1.0
+
+X-KDE-PluginInfo-Depends=
+X-KDE-PluginInfo-License=MIT
+X-KDE-ServiceTypes=KWin/Script,KCModule
+X-KDE-Library=kwin/effects/configs/kcm_kwin4_genericscripted
+X-KDE-PluginKeyword=zellij-tiles
+X-KDE-ParentComponents=zellij-tiles
+Type=Service
