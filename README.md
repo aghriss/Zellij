@@ -4,7 +4,16 @@ This is a simple tiling Kwin script for KDE Plasma.
 
 The shortcuts are self-explanatory. These are my settings:
 
+## Install
+```
+    git clone https://github.com/aghriss/Zellij.git
+    kpackagetool5 -i Zellij
+    mkdir -p ~/.local/share/kservices5
+    ln -sf ~/.local/share/kwin/scripts/zellij-tiles/metadata.desktop ~/.local/share/kservices5/zellij-tiles.desktop
+```
 
+
+## Shortcuts
 
 | Shortcut               | Default Binding       |
 |------------------------|-----------------------|
@@ -25,13 +34,10 @@ The shortcuts are self-explanatory. These are my settings:
 | Change Fullscreen      | Ctrl+Alt+Num+.        |
 
 
-- Demo:
+## Demo:
 
 https://user-images.githubusercontent.com/32200675/173737161-f2769dbe-4979-47e9-bd43-fd34a683c657.mp4
 
 
 
-
-
-
-This was initially a pull request from [Mudeer](https://github.com/darkstego/Mudeer/)
+- This was initially a pull request from [Mudeer](https://github.com/darkstego/Mudeer/)
