@@ -59,7 +59,14 @@ function changeHeight(workspace, numTiles) {
 function changeFullscreen(workspace) {
     var client = workspace.activeClient;
     if (client.specialWindow) return;
+    var geometry = {
+        x: client.geometry.x,
+        y: client.geometry.y,
+        width: client.geometry.width,
+        height: client.geometry.height
+    };
     client.fullScreen = !client.fullScreen;
+    client.geometry = geometry;
 }
 
 function getNumTiles(length, maxLength) {
@@ -70,12 +77,12 @@ function nextStep(startPos, length, maxLength, step) {
     var numTiles = getNumTiles(length, maxLength);
     var currentIndex = getIndex(startPos, maxLength, numTiles);
     var nextIndex = Math.max(0, Math.min(currentIndex + step, numTiles));
-    var box = getBox(nextIndex+1, maxLength, numTiles);
+    var box = getBox(nextIndex + 1, maxLength, numTiles);
     box = adjustGap(box.start, box.length)
     return box;
 }
 
-function moveHorizontal(workspace, step){
+function moveHorizontal(workspace, step) {
     var client = workspace.activeClient;
     if (client.specialWindow) return;
     var maxArea = getMaxArea(workspace);
@@ -83,7 +90,8 @@ function moveHorizontal(workspace, step){
     client.geometry.x = box.start;
     //client.geometry.width = box.length;
 }
-function moveVertical(workspace, step){
+
+function moveVertical(workspace, step) {
     var client = workspace.activeClient;
     if (client.specialWindow) return;
     var maxArea = getMaxArea(workspace);
@@ -92,7 +100,18 @@ function moveVertical(workspace, step){
     //client.geometry.height = box.length;
 }
 
+function addDesktops(n, addindex) {
+    /* n is number of desktops to add */
+    workspace.desktops = workspace.desktops + n;                /* Increase number of desktops by n */
 
+    workspace.clientList().forEach(                             /* Loop over all windows */
+        function (w, i) {
+            if (w.desktop > addindex) {                        /* If window desktop has index addindex or higher */
+                w.desktop = w.desktop + n;                      /* Move window n desktops further */
+            }
+        }
+    );
+}
 
 var prefix = "Zellij";
 
@@ -122,14 +141,29 @@ for (let i = 1; i < 5; i++) {
 }
 
 text = "Move Left";
-registerShortcut(prefix + " " + text, prefix + ": " + text, "", function (){
-    moveHorizontal(workspace, -1)});
+registerShortcut(prefix + " " + text, prefix + ": " + text, "", function () {
+    moveHorizontal(workspace, -1)
+});
 text = "Move Right";
-registerShortcut(prefix + " " + text, prefix + ": " + text, "", function (){
-    moveHorizontal(workspace, 1)})
+registerShortcut(prefix + " " + text, prefix + ": " + text, "", function () {
+    moveHorizontal(workspace, 1)
+})
 text = "Move Up"
-registerShortcut(prefix + " " + text, prefix + ": " + text, "", function (){
-    moveVertical(workspace, -1)});
+registerShortcut(prefix + " " + text, prefix + ": " + text, "", function () {
+    moveVertical(workspace, -1)
+});
 text = "Move Down";
-registerShortcut(prefix + " " + text, prefix + ": " + text, "", function (){
-    moveVertical(workspace, 1)});
+registerShortcut(prefix + " " + text, prefix + ": " + text, "", function () {
+    moveVertical(workspace, 1)
+});
+
+text = "Add Desktop"
+registerShortcut(prefix + " " + text, prefix + ": " + text, "Ctrl+Shift+N", function () {
+    addDesktops(1, workspace.currentDesktop)
+});
+
+
+text = "Remove current Desktop"
+registerShortcut(prefix + " " + text, prefix + ": " + text, "Ctrl+Shift+X", function () {
+    addDesktops(-1, workspace.currentDesktop)
+});
